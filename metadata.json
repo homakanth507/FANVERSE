@@ -1,0 +1,8 @@
+{
+  "name": "FANVERSE - Live Fandom & Match Pulse",
+  "description": "Next-generation live fandom experience for sports, cinema releases, interactive match tactics, and real-time community rooms.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

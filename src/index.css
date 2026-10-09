@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #11131b;
+  --color-surface-dim: #11131b;
+  --color-surface-bright: #373942;
+  --color-surface-container-lowest: #0c0e16;
+  --color-surface-container-low: #191b24;
+  --color-surface-container: #1d1f28;
+  --color-surface-container-high: #282a32;
+  --color-surface-container-highest: #33343e;
+  --color-on-surface: #e2e1ee;
+  --color-on-surface-variant: #e4beb6;
+  --color-outline: #ab8982;
+  --color-outline-variant: #5b403a;
+
+  --color-primary: #ffb4a4;
+  --color-primary-container: #ff5733;
+  --color-on-primary: #630e00;
+  --color-on-primary-container: #580c00;
+
+  --color-secondary: #7dffa2;
+  --color-secondary-container: #05e777;
+  --color-secondary-fixed: #62ff96;
+  --color-secondary-fixed-dim: #00e475;
+  --color-on-secondary: #003918;
+
+  --color-tertiary: #cdbdff;
+  --color-tertiary-container: #9a7bff;
+  --color-on-tertiary: #370096;
+
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+}
+
+html, body {
+  font-family: var(--font-body);
+  background-color: #11131b;
+  color: #e2e1ee;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-space {
+  font-family: var(--font-headline);
+}
+
+/* Material Symbols font setup */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbars */
+.no-scrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

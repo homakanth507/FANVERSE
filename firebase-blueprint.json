@@ -1,0 +1,110 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Stores user profile information, fan points, and preferences",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "username": { "type": "string", "maxLength": 64 },
+        "displayName": { "type": "string", "maxLength": 64 },
+        "avatar": { "type": "string", "maxLength": 512 },
+        "fanPoints": { "type": "number" },
+        "tier": { "type": "string", "maxLength": 64 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "username", "fanPoints"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "Live stadium room and film theory discourse comments",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "author": { "type": "string", "maxLength": 64 },
+        "avatar": { "type": "string", "maxLength": 512 },
+        "content": { "type": "string", "maxLength": 1000 },
+        "upvotes": { "type": "number" },
+        "category": { "type": "string", "maxLength": 64 },
+        "room": { "type": "string", "maxLength": 64 },
+        "isHotTake": { "type": "boolean" },
+        "isSpoiler": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "author", "content", "room"]
+    },
+    "CommentReply": {
+      "title": "CommentReply",
+      "description": "Nested replies to live comments",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "commentId": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "author": { "type": "string", "maxLength": 64 },
+        "avatar": { "type": "string", "maxLength": 512 },
+        "content": { "type": "string", "maxLength": 1000 },
+        "location": { "type": "string", "maxLength": 64 },
+        "upvotes": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "commentId", "userId", "author", "content"]
+    },
+    "PredictionVote": {
+      "title": "PredictionVote",
+      "description": "User prediction votes for match decider or tactics",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "pollId": { "type": "string", "maxLength": 64 },
+        "selection": { "type": "string", "maxLength": 64 },
+        "pointsWagered": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "pollId", "selection"]
+    },
+    "MovieReview": {
+      "title": "MovieReview",
+      "description": "User ratings and reviews for featured films",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "movieId": { "type": "string", "maxLength": 64 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "author": { "type": "string", "maxLength": 64 },
+        "avatar": { "type": "string", "maxLength": 512 },
+        "rating": { "type": "number" },
+        "review": { "type": "string", "maxLength": 2000 },
+        "helpfulCount": { "type": "number" },
+        "isSpoiler": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "movieId", "userId", "rating", "review"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "#/entities/UserProfile",
+      "description": "Individual user account and fan pulse statistics"
+    },
+    "/comments/{commentId}": {
+      "schema": "#/entities/Comment",
+      "description": "Live stadium discussion comments"
+    },
+    "/comments/{commentId}/replies/{replyId}": {
+      "schema": "#/entities/CommentReply",
+      "description": "Replies belonging to a parent comment"
+    },
+    "/predictions/{predictionId}": {
+      "schema": "#/entities/PredictionVote",
+      "description": "Prediction votes and fan points stakes"
+    },
+    "/movieReviews/{reviewId}": {
+      "schema": "#/entities/MovieReview",
+      "description": "Movie audience ratings and critique logs"
+    }
+  }
+}
